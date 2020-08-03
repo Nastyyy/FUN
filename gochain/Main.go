@@ -35,6 +35,7 @@ func main() {
 
 	for _, b := range chain.Blocks {
 		fmt.Printf("\n| PrevHash: | %x | Hash: | %x |", b.PrevHash, b.Hash)
+		fmt.Print("\n------------------------------------------------------------------------------------------------------------------------------------------------------------")
 	}
 	//printBlock(block, block2)
 }
