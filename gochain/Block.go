@@ -17,7 +17,7 @@ func (b *Block) AddData(data Data) {
 	b.Data = append(b.Data, data)
 }
 
-func (b Block) GetHash() []byte {
+func (b Block) getHash() []byte {
 	hash := sha256.New()
 
 	timestamp := b.Timestamp
@@ -28,6 +28,13 @@ func (b Block) GetHash() []byte {
 
 	hash.Write(time)
 	return hash.Sum(nil)
+}
+
+func NewBlock(timestamp *time.Time, prevHash []byte) (*Block, error) {
+	block := Block{Timestamp: timestamp, PrevHash: prevHash}
+	block.Hash = block.getHash()
+
+	return &block, nil
 }
 
 type Data interface {
